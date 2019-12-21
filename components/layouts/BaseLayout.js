@@ -1,4 +1,5 @@
-import Header from '../shared/Header'
+import React from 'react';
+import Header from '../shared/Header';
 
 const BaseLayout = ({ children, className }) =>
     <div className="layout-container">

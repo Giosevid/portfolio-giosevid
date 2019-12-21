@@ -446,6 +446,8 @@ exports.PHASE_PRODUCTION_SERVER = 'phase-production-server';
 exports.PHASE_DEVELOPMENT_SERVER = 'phase-development-server';
 exports.PAGES_MANIFEST = 'pages-manifest.json';
 exports.BUILD_MANIFEST = 'build-manifest.json';
+exports.EXPORT_MARKER = 'export-marker.json';
+exports.EXPORT_DETAIL = 'export-detail.json';
 exports.PRERENDER_MANIFEST = 'prerender-manifest.json';
 exports.ROUTES_MANIFEST = 'routes-manifest.json';
 exports.REACT_LOADABLE_MANIFEST = 'react-loadable-manifest.json';
@@ -812,7 +814,7 @@ class Document extends _react.Component {
         // In dev we invalidate the cache by appending a timestamp to the resource URL.
         // This is a workaround to fix https://github.com/zeit/next.js/issues/5860
         // TODO: remove this workaround when https://bugs.webkit.org/show_bug.cgi?id=187726 is fixed.
-        _devOnlyInvalidateCacheQueryString:  true ? '?ts=' + (0, _now.default)() : undefined
+        _devOnlyInvalidateCacheQueryString: true ? '?ts=' + (0, _now.default)() : undefined
       }
     }, _react.default.createElement(Document, props));
   }
@@ -841,7 +843,7 @@ class Html extends _react.Component {
     } = this.context._documentProps;
     return _react.default.createElement("html", (0, _extends2.default)({}, htmlProps, this.props, {
       amp: inAmpMode ? '' : undefined,
-      "data-ampdevmode": inAmpMode && "development" !== 'production' ? '' : undefined
+      "data-ampdevmode": inAmpMode && true ? '' : undefined
     }));
   }
 
@@ -1213,7 +1215,7 @@ class NextScript extends _react.Component {
     var {
       _devOnlyInvalidateCacheQueryString
     } = this.context;
-    return polyfillFiles.filter(polyfill => !/\.module\.js$/.test(polyfill)).map(polyfill => _react.default.createElement("script", {
+    return polyfillFiles.filter(polyfill => polyfill.endsWith('.js') && !/\.module\.js$/.test(polyfill)).map(polyfill => _react.default.createElement("script", {
       key: polyfill,
       nonce: this.props.nonce,
       crossOrigin: this.props.crossOrigin || undefined,

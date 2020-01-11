@@ -8,6 +8,7 @@ import {
     Nav,
     NavItem
 } from 'reactstrap';
+import { useAuth0 } from '../../react-auth0-spa'
 
 const BsNavLink = ({route, title}) =>
     <Link href={route}>
@@ -15,20 +16,23 @@ const BsNavLink = ({route, title}) =>
     </Link>;
 
 const Login = () => {
+    const { loginWithRedirect } = useAuth0();
     return (
-      <span className='nav-link port-navbar-link'>Login</span>
+        <span onClick={() => loginWithRedirect({})} className='nav-link port-navbar-link clickable'>Login</span>
     )
 };
 
 const Logout = () => {
+    const { logout } = useAuth0();
     return (
-      <span className='nav-link port-navbar-link'>Logout</span>
+      <span onClick={() => logout()} className='nav-link port-navbar-link clickable'>Logout</span>
     )
 };
 
 const Example = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const { isAuthenticated, user } = useAuth0();
 
     return (
         <div>
@@ -52,12 +56,24 @@ const Example = () => {
                         <NavItem className="port-navbar-item">
                             <BsNavLink route="/cv" title="Cv" />
                         </NavItem>
-                        <NavItem className="port-navbar-item">
-                           <Login />
-                        </NavItem>
-                        <NavItem className="port-navbar-item">
-                            <Logout />
-                        </NavItem>
+                        {
+                            !isAuthenticated &&
+                            <NavItem className="port-navbar-item">
+                                <Login />
+                            </NavItem>
+                        }
+                        {
+                            isAuthenticated &&
+                            <NavItem className="port-navbar-item">
+                                <Logout />
+                            </NavItem>
+                        }
+                        {
+                            isAuthenticated &&
+                            <NavItem className="port-navbar-item">
+                                <span className="nav-link port-navbar-link">{user && user.given_name}</span>
+                            </NavItem>
+                        }
                     </Nav>
                 </Collapse>
             </Navbar>

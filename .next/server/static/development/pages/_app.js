@@ -93,6 +93,233 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./auth_config.json":
+/*!**************************!*\
+  !*** ./auth_config.json ***!
+  \**************************/
+/*! exports provided: domain, clientId, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"domain\":\"dev-erzj772m.auth0.com\",\"clientId\":\"xE00CCCb1T6VXJLGYFN7SU79iHJkt1w0\"}");
+
+/***/ }),
+
+/***/ "./components/BasePage.js":
+/*!********************************!*\
+  !*** ./components/BasePage.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const BasePage = ({
+  children,
+  className
+}) => {
+  const classNames = className || '';
+  return __jsx("div", {
+    className: `base-page ${classNames}`
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BasePage);
+
+/***/ }),
+
+/***/ "./components/layouts/BaseLayout.js":
+/*!******************************************!*\
+  !*** ./components/layouts/BaseLayout.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/Header */ "./components/shared/Header.js");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const BaseLayout = ({
+  children,
+  className
+}) => __jsx("div", {
+  className: "layout-container"
+}, __jsx(_shared_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx("main", {
+  className: `cover ${className}`
+}, __jsx("div", {
+  className: "wrapper"
+}, children)));
+
+/* harmony default export */ __webpack_exports__["default"] = (BaseLayout);
+
+/***/ }),
+
+/***/ "./components/shared/Header.js":
+/*!*************************************!*\
+  !*** ./components/shared/Header.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../react-auth0-spa */ "./react-auth0-spa.js");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const BsNavLink = ({
+  route,
+  title
+}) => __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  href: route
+}, __jsx("a", {
+  className: "nav-link port-navbar-link"
+}, title));
+
+const Login = () => {
+  const {
+    loginWithRedirect
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
+  return __jsx("span", {
+    onClick: () => loginWithRedirect({}),
+    className: "nav-link port-navbar-link clickable"
+  }, "Login");
+};
+
+const Logout = () => {
+  const {
+    logout
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
+  return __jsx("span", {
+    onClick: () => logout(),
+    className: "nav-link port-navbar-link clickable"
+  }, "Logout");
+};
+
+const Example = () => {
+  const {
+    0: isOpen,
+    1: setIsOpen
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  const {
+    isAuthenticated,
+    user
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
+  return __jsx("div", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Navbar"], {
+    className: "port-navbar port-default absolute",
+    color: "transparent",
+    dark: true,
+    expand: "md"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarBrand"], {
+    className: "port-navbar-brand",
+    href: "/"
+  }, "Giosevid Acosta"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarToggler"], {
+    onClick: toggle
+  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Collapse"], {
+    isOpen: isOpen,
+    navbar: true
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"], {
+    className: "ml-auto",
+    navbar: true
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(BsNavLink, {
+    route: "/",
+    title: "Home"
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(BsNavLink, {
+    route: "/about",
+    title: "About"
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(BsNavLink, {
+    route: "/portfolios",
+    title: "Portfolio"
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(BsNavLink, {
+    route: "/blogs",
+    title: "Blog"
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(BsNavLink, {
+    route: "/cv",
+    title: "Cv"
+  })), !isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(Login, null)), isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx(Logout, null)), isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+    className: "port-navbar-item"
+  }, __jsx("span", {
+    className: "nav-link port-navbar-link"
+  }, user && user.given_name))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Example);
+
+/***/ }),
+
+/***/ "./components/shared/Loading.js":
+/*!**************************************!*\
+  !*** ./components/shared/Loading.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
+/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/BasePage */ "./components/BasePage.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const Loading = () => __jsx(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, __jsx(_components_BasePage__WEBPACK_IMPORTED_MODULE_2__["default"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx("h1", null, "Cargando..."))));
+
+/* harmony default export */ __webpack_exports__["default"] = (Loading);
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/map.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/map */ "core-js/library/fn/map");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
@@ -304,6 +531,74 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutProperties; });
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = Object(_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(source, excluded);
+  var key, i;
+
+  if (_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default.a) {
+    var sourceSymbolKeys = _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default()(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutPropertiesLoose; });
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+
+  var sourceKeys = _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(source);
+
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/extends.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/extends.js ***!
@@ -474,6 +769,317 @@ module.exports = _typeof;
 
 module.exports = __webpack_require__(/*! ./dist/pages/_app */ "./node_modules/next/dist/pages/_app.js")
 
+
+/***/ }),
+
+/***/ "./node_modules/next/dist/client/link.js":
+/*!***********************************************!*\
+  !*** ./node_modules/next/dist/client/link.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireWildcard.js");
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _map = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/map */ "./node_modules/@babel/runtime-corejs2/core-js/map.js"));
+
+var _url = __webpack_require__(/*! url */ "url");
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
+
+var _router = _interopRequireDefault(__webpack_require__(/*! ./router */ "./node_modules/next/dist/client/router.js"));
+
+var _rewriteUrlForExport = __webpack_require__(/*! ../next-server/lib/router/rewrite-url-for-export */ "./node_modules/next/dist/next-server/lib/router/rewrite-url-for-export.js");
+
+var _utils = __webpack_require__(/*! ../next-server/lib/utils */ "./node_modules/next/dist/next-server/lib/utils.js");
+
+function isLocal(href) {
+  var url = (0, _url.parse)(href, false, true);
+  var origin = (0, _url.parse)((0, _utils.getLocationOrigin)(), false, true);
+  return !url.host || url.protocol === origin.protocol && url.host === origin.host;
+}
+
+function memoizedFormatUrl(formatFunc) {
+  var lastHref = null;
+  var lastAs = null;
+  var lastResult = null;
+  return (href, as) => {
+    if (lastResult && href === lastHref && as === lastAs) {
+      return lastResult;
+    }
+
+    var result = formatFunc(href, as);
+    lastHref = href;
+    lastAs = as;
+    lastResult = result;
+    return result;
+  };
+}
+
+function formatUrl(url) {
+  return url && typeof url === 'object' ? (0, _utils.formatWithValidation)(url) : url;
+}
+
+var observer;
+var listeners = new _map.default();
+var IntersectionObserver = false ? undefined : null;
+
+function getObserver() {
+  // Return shared instance of IntersectionObserver if already created
+  if (observer) {
+    return observer;
+  } // Only create shared IntersectionObserver if supported in browser
+
+
+  if (!IntersectionObserver) {
+    return undefined;
+  }
+
+  return observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!listeners.has(entry.target)) {
+        return;
+      }
+
+      var cb = listeners.get(entry.target);
+
+      if (entry.isIntersecting || entry.intersectionRatio > 0) {
+        observer.unobserve(entry.target);
+        listeners.delete(entry.target);
+        cb();
+      }
+    });
+  }, {
+    rootMargin: '200px'
+  });
+}
+
+var listenToIntersections = (el, cb) => {
+  var observer = getObserver();
+
+  if (!observer) {
+    return () => {};
+  }
+
+  observer.observe(el);
+  listeners.set(el, cb);
+  return () => {
+    try {
+      observer.unobserve(el);
+    } catch (err) {
+      console.error(err);
+    }
+
+    listeners.delete(el);
+  };
+};
+
+class Link extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.p = void 0;
+
+    this.cleanUpListeners = () => {};
+
+    this.formatUrls = memoizedFormatUrl((href, asHref) => {
+      return {
+        href: formatUrl(href),
+        as: asHref ? formatUrl(asHref) : asHref
+      };
+    });
+
+    this.linkClicked = e => {
+      // @ts-ignore target exists on currentTarget
+      var {
+        nodeName,
+        target
+      } = e.currentTarget;
+
+      if (nodeName === 'A' && (target && target !== '_self' || e.metaKey || e.ctrlKey || e.shiftKey || e.nativeEvent && e.nativeEvent.which === 2)) {
+        // ignore click for new tab / new window behavior
+        return;
+      }
+
+      var {
+        href,
+        as
+      } = this.formatUrls(this.props.href, this.props.as);
+
+      if (!isLocal(href)) {
+        // ignore click if it's outside our scope (e.g. https://google.com)
+        return;
+      }
+
+      var {
+        pathname
+      } = window.location;
+      href = (0, _url.resolve)(pathname, href);
+      as = as ? (0, _url.resolve)(pathname, as) : href;
+      e.preventDefault(); //  avoid scroll for urls with anchor refs
+
+      var {
+        scroll
+      } = this.props;
+
+      if (scroll == null) {
+        scroll = as.indexOf('#') < 0;
+      } // replace state instead of push if prop is present
+
+
+      _router.default[this.props.replace ? 'replace' : 'push'](href, as, {
+        shallow: this.props.shallow
+      }).then(success => {
+        if (!success) return;
+
+        if (scroll) {
+          window.scrollTo(0, 0);
+          document.body.focus();
+        }
+      });
+    };
+
+    if (true) {
+      if (props.prefetch) {
+        console.warn('Next.js auto-prefetches automatically based on viewport. The prefetch attribute is no longer needed. More: https://err.sh/zeit/next.js/prefetch-true-deprecated');
+      }
+    }
+
+    this.p = props.prefetch !== false;
+  }
+
+  componentWillUnmount() {
+    this.cleanUpListeners();
+  }
+
+  getHref() {
+    var {
+      pathname
+    } = window.location;
+    var {
+      href: parsedHref
+    } = this.formatUrls(this.props.href, this.props.as);
+    return (0, _url.resolve)(pathname, parsedHref);
+  }
+
+  handleRef(ref) {
+    var isPrefetched = _router.default.router.pageLoader.prefetched[this.getHref()];
+
+    if (this.p && IntersectionObserver && ref && ref.tagName) {
+      this.cleanUpListeners();
+
+      if (!isPrefetched) {
+        this.cleanUpListeners = listenToIntersections(ref, () => {
+          this.prefetch();
+        });
+      }
+    }
+  } // The function is memoized so that no extra lifecycles are needed
+  // as per https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+
+
+  prefetch() {
+    if (!this.p || true) return; // Prefetch the JSON page if asked (only in the client)
+
+    _router.default.prefetch(this.getHref());
+  }
+
+  render() {
+    var {
+      children
+    } = this.props;
+    var {
+      href,
+      as
+    } = this.formatUrls(this.props.href, this.props.as); // Deprecated. Warning shown by propType check. If the children provided is a string (<Link>example</Link>) we wrap it in an <a> tag
+
+    if (typeof children === 'string') {
+      children = _react.default.createElement("a", null, children);
+    } // This will return the first child, if multiple are provided it will throw an error
+
+
+    var child = _react.Children.only(children);
+
+    var props = {
+      ref: el => {
+        this.handleRef(el);
+
+        if (child && typeof child === 'object' && child.ref) {
+          if (typeof child.ref === 'function') child.ref(el);else if (typeof child.ref === 'object') {
+            child.ref.current = el;
+          }
+        }
+      },
+      onMouseEnter: e => {
+        if (child.props && typeof child.props.onMouseEnter === 'function') {
+          child.props.onMouseEnter(e);
+        }
+
+        this.prefetch();
+      },
+      onClick: e => {
+        if (child.props && typeof child.props.onClick === 'function') {
+          child.props.onClick(e);
+        }
+
+        if (!e.defaultPrevented) {
+          this.linkClicked(e);
+        }
+      }
+    }; // If child is an <a> tag and doesn't have a href attribute, or if the 'passHref' property is
+    // defined, we specify the current 'href', so that repetition is not needed by the user
+
+    if (this.props.passHref || child.type === 'a' && !('href' in child.props)) {
+      props.href = as || href;
+    } // Add the ending slash to the paths. So, we can serve the
+    // "<page>/index.html" directly.
+
+
+    if (false) {}
+
+    return _react.default.cloneElement(child, props);
+  }
+
+}
+
+Link.propTypes = void 0;
+
+if (true) {
+  var warn = (0, _utils.execOnce)(console.error); // This module gets removed by webpack.IgnorePlugin
+
+  var exact = __webpack_require__(/*! prop-types-exact */ "prop-types-exact");
+
+  Link.propTypes = exact({
+    href: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]).isRequired,
+    as: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+    prefetch: _propTypes.default.bool,
+    replace: _propTypes.default.bool,
+    shallow: _propTypes.default.bool,
+    passHref: _propTypes.default.bool,
+    scroll: _propTypes.default.bool,
+    children: _propTypes.default.oneOfType([_propTypes.default.element, (props, propName) => {
+      var value = props[propName];
+
+      if (typeof value === 'string') {
+        warn("Warning: You're using a string directly inside <Link>. This usage has been deprecated. Please add an <a> tag as child of <Link>");
+      }
+
+      return null;
+    }]).isRequired
+  });
+}
+
+var _default = Link;
+exports.default = _default;
 
 /***/ }),
 
@@ -817,9 +1423,9 @@ exports.rewriteUrlForNextExport = rewriteUrlForNextExport;
 "use strict";
 
 
-var _Promise = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
-
 var _Object$assign = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+
+var _Promise = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
 
 var _Object$defineProperty = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
 
@@ -847,6 +1453,12 @@ const route_matcher_1 = __webpack_require__(/*! ./utils/route-matcher */ "./node
 
 const route_regex_1 = __webpack_require__(/*! ./utils/route-regex */ "./node_modules/next/dist/next-server/lib/router/utils/route-regex.js");
 
+function addBasePath(path) {
+  // @ts-ignore variable is always a string
+  const p = "";
+  return path.indexOf(p) !== 0 ? p + path : path;
+}
+
 function toRoute(path) {
   return path.replace(/\/$/, '') || '/';
 }
@@ -861,6 +1473,9 @@ class Router {
     err,
     subscription
   }) {
+    // Static Data Cache
+    this.sdc = {};
+
     this.onPopState = e => {
       if (!e.state) {
         // We get state as undefined for two reasons.
@@ -908,6 +1523,26 @@ class Router {
       }
 
       this.replace(url, as, options);
+    };
+
+    this._getStaticData = (asPath, _cachedData) => {
+      let pathname = url_1.parse(asPath).pathname;
+      pathname = !pathname || pathname === '/' ? '/index' : pathname;
+      return  false ? undefined : fetch( // @ts-ignore __NEXT_DATA__
+      `/_next/data/${__NEXT_DATA__.buildId}${pathname}.json`).then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to load static props`);
+        }
+
+        return res.json();
+      }).then(data => {
+        this.sdc[pathname] = data;
+        return data;
+      }).catch(err => {
+        ;
+        err.code = 'PAGE_LOAD_ERROR';
+        throw err;
+      });
     }; // represents the current component key
 
 
@@ -1040,7 +1675,7 @@ class Router {
       if (!options._h && this.onlyAHashChange(as)) {
         this.asPath = as;
         Router.events.emit('hashChangeStart', as);
-        this.changeState(method, url, as);
+        this.changeState(method, url, addBasePath(as));
         this.scrollToHash(as);
         Router.events.emit('hashChangeComplete', as);
         return resolve(true);
@@ -1108,7 +1743,7 @@ class Router {
         }
 
         Router.events.emit('beforeHistoryChange', as);
-        this.changeState(method, url, as, options);
+        this.changeState(method, url, addBasePath(as), options);
         const hash = window.location.hash.substring(1);
 
         if (true) {
@@ -1187,17 +1822,15 @@ class Router {
         }
       }
 
-      return new _Promise((resolve, reject) => {
-        // we provide AppTree later so this needs to be `any`
-        this.getInitialProps(Component, {
-          pathname,
-          query,
-          asPath: as
-        }).then(props => {
-          routeInfo.props = props;
-          this.components[route] = routeInfo;
-          resolve(routeInfo);
-        }, reject);
+      return this._getData(() => Component.__NEXT_SPR ? this._getStaticData(as) : this.getInitialProps(Component, // we provide AppTree later so this needs to be `any`
+      {
+        pathname,
+        query,
+        asPath: as
+      })).then(props => {
+        routeInfo.props = props;
+        this.components[route] = routeInfo;
+        return routeInfo;
       });
     }).catch(err => {
       return new _Promise(resolve => {
@@ -1336,12 +1969,17 @@ class Router {
         }
 
         return;
-      } // Prefetch is not supported in development mode because it would trigger on-demand-entries
+      } // @ts-ignore pathname is always defined
 
 
-      if (true) return; // @ts-ignore pathname is always defined
+      const route = toRoute(pathname); // Prefetch is not supported in development mode because it would trigger on-demand-entries
 
-      const route = toRoute(pathname);
+      if (true) {
+        // mark it as prefetched for debugging in dev
+        this.pageLoader.prefetched[route] = true;
+        return;
+      }
+
       this.pageLoader.prefetch(route).then(resolve, reject);
     });
   }
@@ -1368,7 +2006,7 @@ class Router {
     return Component;
   }
 
-  async getInitialProps(Component, ctx) {
+  _getData(fn) {
     let cancelled = false;
 
     const cancel = () => {
@@ -1376,54 +2014,35 @@ class Router {
     };
 
     this.clc = cancel;
+    return fn().then(data => {
+      if (cancel === this.clc) {
+        this.clc = null;
+      }
+
+      if (cancelled) {
+        const err = new Error('Loading initial props cancelled');
+        err.cancelled = true;
+        throw err;
+      }
+
+      return data;
+    });
+  }
+
+  getInitialProps(Component, ctx) {
     const {
       Component: App
     } = this.components['/_app'];
-    let props;
 
-    if (Component.__NEXT_SPR) {
-      let status; // pathname should have leading slash
+    const AppTree = this._wrapApp(App);
 
-      let {
-        pathname
-      } = url_1.parse(ctx.asPath || ctx.pathname);
-      pathname = !pathname || pathname === '/' ? '/index' : pathname;
-      props = await fetch( // @ts-ignore __NEXT_DATA__
-      `/_next/data/${__NEXT_DATA__.buildId}${pathname}.json`).then(res => {
-        if (!res.ok) {
-          status = res.status;
-          throw new Error('failed to load prerender data');
-        }
-
-        return res.json();
-      }).catch(err => {
-        console.error(`Failed to load data`, status, err);
-        window.location.href = pathname;
-        return new _Promise(() => {});
-      });
-    } else {
-      const AppTree = this._wrapApp(App);
-
-      ctx.AppTree = AppTree;
-      props = await utils_1.loadGetInitialProps(App, {
-        AppTree,
-        Component,
-        router: this,
-        ctx
-      });
-    }
-
-    if (cancel === this.clc) {
-      this.clc = null;
-    }
-
-    if (cancelled) {
-      const err = new Error('Loading initial props cancelled');
-      err.cancelled = true;
-      throw err;
-    }
-
-    return props;
+    ctx.AppTree = AppTree;
+    return utils_1.loadGetInitialProps(App, {
+      AppTree,
+      Component,
+      router: this,
+      ctx
+    });
   }
 
   abortComponentLoad(as) {
@@ -1849,6 +2468,18 @@ function createUrl(router) {
 
 /***/ }),
 
+/***/ "./node_modules/next/link.js":
+/*!***********************************!*\
+  !*** ./node_modules/next/link.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/next/dist/client/link.js")
+
+
+/***/ }),
+
 /***/ "./pages/_app.js":
 /*!***********************!*\
   !*** ./pages/_app.js ***!
@@ -1875,11 +2506,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../styles/main.scss */ "./styles/main.scss");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_10__);
-
+/* harmony import */ var _react_auth0_spa__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../react-auth0-spa */ "./react-auth0-spa.js");
+/* harmony import */ var _auth_config_json__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../auth_config.json */ "./auth_config.json");
+var _auth_config_json__WEBPACK_IMPORTED_MODULE_10___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../auth_config.json */ "./auth_config.json", 1);
+/* harmony import */ var _utils_history__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/history */ "./utils/history.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../styles/main.scss */ "./styles/main.scss");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_13__);
 
 
 
@@ -1897,10 +2531,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+
+
+
+const onRedirectCallback = appState => {
+  _utils_history__WEBPACK_IMPORTED_MODULE_11__["default"].push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
+};
+
 const MyApp = ({
   Component,
   pageProps
-}) => __jsx(Component, pageProps);
+}) => __jsx(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_9__["Auth0Provider"], {
+  domain: _auth_config_json__WEBPACK_IMPORTED_MODULE_10__.domain,
+  client_id: _auth_config_json__WEBPACK_IMPORTED_MODULE_10__.clientId,
+  redirect_uri: "http://localhost:3000",
+  onRedirectCallback: onRedirectCallback
+}, __jsx(Component, pageProps));
 
 MyApp.getInitialProps = async appContext => {
   const appProps = await next_app__WEBPACK_IMPORTED_MODULE_8___default.a.getInitialProps(appContext);
@@ -1908,6 +2555,162 @@ MyApp.getInitialProps = async appContext => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyApp);
+
+/***/ }),
+
+/***/ "./react-auth0-spa.js":
+/*!****************************!*\
+  !*** ./react-auth0-spa.js ***!
+  \****************************/
+/*! exports provided: Auth0Context, useAuth0, Auth0Provider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Auth0Context", function() { return Auth0Context; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useAuth0", function() { return useAuth0; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Auth0Provider", function() { return Auth0Provider; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _auth0_auth0_spa_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @auth0/auth0-spa-js */ "@auth0/auth0-spa-js");
+/* harmony import */ var _auth0_auth0_spa_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_auth0_auth0_spa_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_shared_Loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/shared/Loading */ "./components/shared/Loading.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jsonwebtoken */ "jsonwebtoken");
+/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_useInterval__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/useInterval */ "./utils/useInterval.js");
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname);
+
+const Auth0Context = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
+const useAuth0 = () => Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(Auth0Context);
+const Auth0Provider = (_ref) => {
+  let {
+    children,
+    onRedirectCallback = DEFAULT_REDIRECT_CALLBACK
+  } = _ref,
+      initOptions = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref, ["children", "onRedirectCallback"]);
+
+  const {
+    0: isAuthenticated,
+    1: setIsAuthenticated
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const {
+    0: user,
+    1: setUser
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null);
+  const {
+    0: auth0Client,
+    1: setAuth0
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null);
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true);
+  const {
+    0: popupOpen,
+    1: setPopupOpen
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const {
+    0: expiresAt,
+    1: setExpiresAt
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(new Date().getTime());
+  Object(_utils_useInterval__WEBPACK_IMPORTED_MODULE_6__["useInterval"])(() => {
+    const actualDate = new Date().getTime();
+    const beforeDate = expiresAt * 1000;
+
+    if (actualDate > beforeDate) {
+      auth0Client.logout();
+    }
+  }, 15000);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+    const initAuth0 = async () => {
+      const auth0FromHook = await _auth0_auth0_spa_js__WEBPACK_IMPORTED_MODULE_2___default()(initOptions);
+      setAuth0(auth0FromHook);
+
+      if (window.location.search.includes("code=")) {
+        const {
+          appState
+        } = await auth0FromHook.handleRedirectCallback();
+        onRedirectCallback(appState);
+      }
+
+      const isAuthenticated = await auth0FromHook.isAuthenticated();
+      setIsAuthenticated(isAuthenticated);
+
+      if (isAuthenticated) {
+        const user = await auth0FromHook.getUser();
+        auth0FromHook.getIdTokenClaims().then(data => {
+          setExpiresAt(data.exp);
+
+          if (new Date().getTime() < data.exp) {
+            return auth0FromHook.logout();
+          }
+
+          js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.set('jwt', data.__raw);
+        });
+        setUser(user);
+      } else {
+        js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.remove('jwt');
+      }
+
+      setLoading(false);
+    };
+
+    initAuth0();
+  }, []);
+
+  const loginWithPopup = async (params = {}) => {
+    setPopupOpen(true);
+
+    try {
+      await auth0Client.loginWithPopup(params);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setPopupOpen(false);
+    }
+
+    const user = await auth0Client.getUser();
+    setUser(user);
+    setIsAuthenticated(true);
+  };
+
+  const handleRedirectCallback = async () => {
+    setLoading(true);
+    await auth0Client.handleRedirectCallback();
+    const user = await auth0Client.getUser();
+    setLoading(false);
+    setIsAuthenticated(true);
+    setUser(user);
+  };
+
+  return __jsx(Auth0Context.Provider, {
+    value: {
+      isAuthenticated,
+      user,
+      loading,
+      popupOpen,
+      loginWithPopup,
+      handleRedirectCallback,
+      getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+      loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+      getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+      getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+      logout: (...p) => auth0Client.logout(...p)
+    }
+  }, loading ? __jsx(_components_shared_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], null) : children);
+};
 
 /***/ }),
 
@@ -1922,6 +2725,61 @@ MyApp.getInitialProps = async appContext => {
 
 /***/ }),
 
+/***/ "./utils/history.js":
+/*!**************************!*\
+  !*** ./utils/history.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+let history;
+
+if (typeof document !== 'undefined') {
+  const createBrowserHistory = __webpack_require__(/*! history */ "history").createBrowserHistory;
+
+  history = createBrowserHistory();
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (history);
+
+/***/ }),
+
+/***/ "./utils/useInterval.js":
+/*!******************************!*\
+  !*** ./utils/useInterval.js ***!
+  \******************************/
+/*! exports provided: useInterval */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useInterval", function() { return useInterval; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function useInterval(callback, delay) {
+  const savedCallback = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(); // Remember the latest callback.
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    savedCallback.current = callback;
+  }, [callback]); // Set up the interval.
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
+/***/ }),
+
 /***/ 0:
 /*!****************************************!*\
   !*** multi private-next-pages/_app.js ***!
@@ -1931,6 +2789,28 @@ MyApp.getInitialProps = async appContext => {
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "@auth0/auth0-spa-js":
+/*!**************************************!*\
+  !*** external "@auth0/auth0-spa-js" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@auth0/auth0-spa-js");
+
+/***/ }),
+
+/***/ "core-js/library/fn/map":
+/*!*****************************************!*\
+  !*** external "core-js/library/fn/map" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/map");
 
 /***/ }),
 
@@ -2066,6 +2946,61 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
+/***/ "history":
+/*!**************************!*\
+  !*** external "history" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("history");
+
+/***/ }),
+
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "jsonwebtoken":
+/*!*******************************!*\
+  !*** external "jsonwebtoken" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("jsonwebtoken");
+
+/***/ }),
+
+/***/ "prop-types":
+/*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+
+/***/ "prop-types-exact":
+/*!***********************************!*\
+  !*** external "prop-types-exact" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types-exact");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -2085,6 +3020,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "reactstrap":
+/*!*****************************!*\
+  !*** external "reactstrap" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("reactstrap");
 
 /***/ }),
 

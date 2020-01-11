@@ -1,6 +1,6 @@
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
-import { Container } from 'reactstrap';
+import { Container } from 'reactstrap'
 
 const About = () =>
   <BaseLayout>

@@ -1,9 +1,11 @@
 import BaseLayout from '../components/layouts/BaseLayout'
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed'
+import { useAuth0 } from '../react-auth0-spa'
 
 const Index = () => {
     const roles = ['React.js', 'React Native', 'Angular.js', 'Angular',  'JavaScript'];
+    const { isAuthenticated, user } = useAuth0();
     return (
     <BaseLayout className="cover">
         <div className="main-section">
@@ -33,6 +35,7 @@ const Index = () => {
                     <Col md="6" className="hero-welcome-wrapper">
                         <div className="hero-welcome-text">
                             <h1>
+                                {isAuthenticated && <span><b> { user && user.name } </b></span>}
                                 Welcome to the portfolio website of Giosevid Acosta.
                                 Get informed, collaborate and discover projects I was working on through the years!
                             </h1>

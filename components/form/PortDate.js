@@ -2,13 +2,14 @@ import React, { useState, Fragment } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import { FormGroup, Label, Button } from 'reactstrap';
-
 import "react-datepicker/dist/react-datepicker.css";
 
 const PortDate = (props) => {
-  const [dateValue, setDateValue] = useState(moment().toDate());
+  const { label, form: { setFieldValue, setFieldTouched, touched, errors }, field: { name }, field, canBeDisabled, initialDate } = props;
+  const validateDate = initialDate ? moment(initialDate).toDate() : moment().toDate();
+  const [dateValue, setDateValue] = useState(validateDate);
   const [isHidden, setIsHidden ] = useState(false);
-  const { label, form: { setFieldValue, setFieldTouched, touched, errors }, field: { name }, field, canBeDisabled } = props;
+
 
   const handleChange = date => {
     setDateValue(date);
@@ -27,12 +28,13 @@ const PortDate = (props) => {
       <div className="input-group">
         { !isHidden &&
           <DatePicker
-            selected={dateValue}
-            onChange={handleChange}
+            className="form-control"
+            selected={ dateValue }
+            onChange={ handleChange }
             peekNextMonth
             showMonthDropdown
             showYearDropdown
-            maxDate={moment().toDate()}
+            maxDate={ new Date() }
             dropdownMode="select"
           />
         }

@@ -9,6 +9,19 @@ exports.getPortfolios = (req, res) => {
   })
 };
 
+exports.getPortfolioById = (req, res) => {
+  const portfolioId = req.params.id;
+
+  Portfolio.findById(portfolioId)
+    .select('-__v')
+    .exec((err, foundPortfolio)=> {
+      if (err) {
+        return res.status(422).send(err);
+      }
+      return res.json(foundPortfolio)
+  });
+};
+
 exports.savePortfolio = (req, res) => {
   const portfolioData = req.body;
   const userId = req.user && req.user.sub;
@@ -20,16 +33,6 @@ exports.savePortfolio = (req, res) => {
       return res.status(422).send(err)
     }
     return res.json(createdPortfolio)
-  })
-};
-
-exports.getPortfolioById = (req, res) => {
-  const portfolioId = req.params.id;
-  Portfolio.findById(portfolioId, (err, foundPortfolio) => {
-    if (err) {
-      return res.status(422).send(err);
-    }
-    return res.json(foundPortfolio)
   })
 };
 

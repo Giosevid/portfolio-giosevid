@@ -1,6 +1,11 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+const axiosInstance = axios.create({
+  baseURL: `http://localhost:3000/api/v1`,
+  timeout: 3000
+});
+
 const setAuthHeader = () => {
   const token = Cookies.getJSON('jwt');
   if (token) {
@@ -20,19 +25,25 @@ const rejectPromise = resError => {
 };
 
 export const getSecretData = async (req) => {
-  return await axios.get('api/v1/secret', setAuthHeader(req) ).then(response =>  response.data);
+  return await axiosInstance.get('api/v1/secret', setAuthHeader(req) ).then(response =>  response.data);
 };
 
-export const getPortfolios = async (req) => {
-  return await axios.get(`api/v1/portfolios`).then(response =>  response.data);
+export const getPortfolios = async () => {
+  return await axiosInstance.get(`http://localhost:3000/api/v1/portfolios`).then(response =>  response.data);
 };
 
 export const getPortfolioById = async (id) => {
-  return await axios.get(`api/v1/portfolios/${id}`).then(response =>  response.data);
+  return await axiosInstance.get(`http://localhost:3000/api/v1/portfolios/5e20767f9eb6ba45b01f3dcd`).then(response =>  response.data);
 };
 
 export const createPortfolio = async (portfolioData) => {
-  return await axios.post('api/v1/portfolios', portfolioData, setAuthHeader() )
+  return await axiosInstance.post('http://localhost:3000/api/v1/portfolios', portfolioData, setAuthHeader() )
+    .then(response =>  response.data)
+    .catch(error => rejectPromise(error))
+};
+
+export const updatePortfolio = async (portfolioData) => {
+  return await axiosInstance.patch(`http://localhost:3000/api/v1/portfolios/${portfolioData._id}`, portfolioData, setAuthHeader() )
     .then(response =>  response.data)
     .catch(error => rejectPromise(error))
 };

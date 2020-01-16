@@ -7,6 +7,16 @@ import { Row, Col } from 'reactstrap'
 import { createPortfolio } from "../actions"
 import { Router } from '../routes'
 
+const INITIAL_VALUES = {
+  title: '',
+  company: '',
+  location: '',
+  position: '',
+  description: '',
+  startDate: '',
+  endDate: ''
+};
+
 const PortfolioNew = () => {
 
   const [error, setError] = useState('');
@@ -32,7 +42,7 @@ const PortfolioNew = () => {
       <BasePage className='portfolio-create-page' title='Create new portfolio'>
         <Row>
           <Col md="6">
-            <PortfolioCreateForm error={error} onSubmit={savePortfolio} />
+            <PortfolioCreateForm initialValues={INITIAL_VALUES} error={error} onSubmit={savePortfolio} />
           </Col>
         </Row>
       </BasePage>

@@ -4,8 +4,8 @@ const PortInput = (
   {
     label,
     type,
-    field, // { name, value, onChange, onBlur }
-    form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+    field,
+    form: { touched, errors },
     ...props
   }) => (
     <FormGroup>

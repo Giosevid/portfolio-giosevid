@@ -1,12 +1,18 @@
 const express = require('express');
 const next = require('next');
+const mongoose = require('mongoose');
+const routes = require('../routes');
 
 //SERVICE
 const authService = require('./services/auth');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handle = routes.getRequestHandler(app);
+const config = require('./config');
+const bodyParser = require('body-parser');
+const bookRoutes = require('./routes/book');
+const portfolioRoutes = require('./routes/portfolio');
 
 const secretData = [
   {
@@ -19,9 +25,18 @@ const secretData = [
   }
 ];
 
+mongoose.connect(config.DB_URI, { userNewUrlParser: true })
+  .then(()=>{console.log('Database conected!')})
+  .catch(error => console.log(error));
+
 app.prepare()
   .then(() => {
     const server = express();
+    server.use(bodyParser.json());
+
+    server.use('/api/v1/books', bookRoutes);
+
+    server.use('/api/v1/portfolios', portfolioRoutes);
 
     server.get('/api/v1/secret', authService.checkJWT, (req, res)=> {
       return res.json(secretData);
@@ -31,13 +46,15 @@ app.prepare()
       return res.json(secretData);
     });
 
-    server.get('/portfolio/:id', (req,res) => {
-      const actualPage = '/portfolio';
-      const queryParams = { id: req.params.id };
+    server.get('/portfolios/:id', (req,res) => {
+      const actualPage = '/portfolios';
+      const queryParams = { title: req.params.id };
       add.render(req, res, actualPage, queryParams)
     });
 
-    server.get('*', (req, res) => handle(req, res));
+    server.get('*', (req, res) => {
+      return handle(req, res)
+    });
 
     server.use(function (err, req, res, next) {
       if (err.name === 'UnauthorizedError') {
@@ -49,6 +66,7 @@ app.prepare()
       if (err) throw err;
       console.log('Ready localhost 3000')
     })
+
   })
   .catch(ex => {
     console.error(ex.stack);

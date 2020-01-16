@@ -29,14 +29,14 @@ const Logout = () => {
     )
 };
 
-const Example = () => {
+const Example = ({ className }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    const { isAuthenticated, user } = useAuth0();
+    const { isAuthenticated } = useAuth0();
 
     return (
         <div>
-            <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
+            <Navbar className={`port-navbar port-nav-base absolute ${className}`} color="transparent" dark expand="md">
                 <NavbarBrand className="port-navbar-brand" href="/">Giosevid Acosta</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
@@ -66,12 +66,6 @@ const Example = () => {
                             isAuthenticated &&
                             <NavItem className="port-navbar-item">
                                 <Logout />
-                            </NavItem>
-                        }
-                        {
-                            isAuthenticated &&
-                            <NavItem className="port-navbar-item">
-                                <span className="nav-link port-navbar-link">{user && user.given_name}</span>
                             </NavItem>
                         }
                     </Nav>

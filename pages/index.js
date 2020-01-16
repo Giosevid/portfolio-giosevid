@@ -1,13 +1,14 @@
 import BaseLayout from '../components/layouts/BaseLayout'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap'
 import Typed from 'react-typed'
 import { useAuth0 } from '../react-auth0-spa'
 
 const Index = () => {
     const roles = ['React.js', 'React Native', 'Angular.js', 'Angular',  'JavaScript'];
     const { isAuthenticated, user } = useAuth0();
+
     return (
-    <BaseLayout className="cover">
+    <BaseLayout className="cover" headerType='index'>
         <div className="main-section">
             <div className="background-image">
                 <img src="/static/images/background-index.png"/>

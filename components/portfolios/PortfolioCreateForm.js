@@ -6,9 +6,9 @@ import PortDate from "../form/PortDate"
 import moment from "moment";
 
 const validateInputs = (values) => {
-  let errors;
+  let errors = {};
   Object.entries(values).forEach(([key, value]) => {
-    if (!value && key !== "endDate")
+    if (!value && key !== "endDate" && key !== "startDate")
       errors[key] = `Field ${ key } is required!`;
   });
 
@@ -20,7 +20,7 @@ const validateInputs = (values) => {
   }
 
   return errors;
-}
+};
 
 const required  = (str) => {
   if (str.length === 0) return "Is required"

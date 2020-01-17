@@ -8,7 +8,7 @@ const PortDate = (props) => {
   const { label, form: { setFieldValue, setFieldTouched, touched, errors }, field: { name }, field, canBeDisabled, initialDate } = props;
   const validateDate = initialDate ? moment(initialDate).toDate() : moment().toDate();
   const [dateValue, setDateValue] = useState(validateDate);
-  const [isHidden, setIsHidden ] = useState(false);
+  const [isHidden, setIsHidden ] = useState(!initialDate);
 
 
   const handleChange = date => {

@@ -55635,6 +55635,11 @@ var Auth0Provider = function Auth0Provider(_ref) {
       expiresAt = _useState6[0],
       setExpiresAt = _useState6[1];
 
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      isSiteOwner = _useState7[0],
+      setIsSiteOwner = _useState7[1];
+
+  var namespace = 'http://localhost:3000';
   Object(_utils_useInterval__WEBPACK_IMPORTED_MODULE_7__["useInterval"])(function () {
     var actualDate = new Date().getTime();
     var beforeDate = expiresAt * 1000;
@@ -55645,7 +55650,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
   }, 15000);
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
     var initAuth0 = function initAuth0() {
-      var auth0FromHook, _ref2, appState, isAuthenticated, _user;
+      var auth0FromHook, _ref2, appState, isAuthenticated, _user, owner;
 
       return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function initAuth0$(_context) {
         while (1) {
@@ -55680,7 +55685,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
               setIsAuthenticated(isAuthenticated);
 
               if (!isAuthenticated) {
-                _context.next = 22;
+                _context.next = 24;
                 break;
               }
 
@@ -55699,16 +55704,18 @@ var Auth0Provider = function Auth0Provider(_ref) {
                 js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.set('jwt', data.__raw);
               });
               setUser(_user);
-              _context.next = 23;
+              owner = _user[namespace + '/role'] === 'siteOwner';
+              setIsSiteOwner(owner);
+              _context.next = 25;
               break;
 
-            case 22:
+            case 24:
               js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.remove('jwt');
 
-            case 23:
+            case 25:
               setLoading(false);
 
-            case 24:
+            case 26:
             case "end":
               return _context.stop();
           }
@@ -55722,6 +55729,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
   var loginWithPopup = function loginWithPopup() {
     var params,
         user,
+        owner,
         _args2 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function loginWithPopup$(_context2) {
       while (1) {
@@ -55755,8 +55763,10 @@ var Auth0Provider = function Auth0Provider(_ref) {
             user = _context2.sent;
             setUser(user);
             setIsAuthenticated(true);
+            owner = user[namespace + '/role'] === 'siteOwner';
+            setIsSiteOwner(owner);
 
-          case 18:
+          case 20:
           case "end":
             return _context2.stop();
         }
@@ -55765,7 +55775,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
   };
 
   var handleRedirectCallback = function handleRedirectCallback() {
-    var user;
+    var user, owner;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handleRedirectCallback$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
@@ -55783,8 +55793,10 @@ var Auth0Provider = function Auth0Provider(_ref) {
             setLoading(false);
             setIsAuthenticated(true);
             setUser(user);
+            owner = user[namespace + '/role'] === 'siteOwner';
+            setIsSiteOwner(owner);
 
-          case 9:
+          case 11:
           case "end":
             return _context3.stop();
         }
@@ -55798,6 +55810,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
       user: user,
       loading: loading,
       popupOpen: popupOpen,
+      isSiteOwner: isSiteOwner,
       loginWithPopup: loginWithPopup,
       handleRedirectCallback: handleRedirectCallback,
       getIdTokenClaims: function getIdTokenClaims() {

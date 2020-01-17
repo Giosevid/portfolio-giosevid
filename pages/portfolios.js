@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout'
-import {Col, Row, Card, CardHeader, CardBody, CardTitle, CardText, Container } from 'reactstrap'
+import { Col, Row, Container, Button } from 'reactstrap'
 import BasePage from '../components/BasePage'
-import { getPortfolios } from "../actions";
+import {deletePortfolio, getPortfolios} from "../actions"
+import { Router } from '../routes'
+import { useAuth0 } from '../react-auth0-spa'
+import PortfolioCard from "../components/portfolios/PortfolioCard";
 
 const Portfolios = () => {
-
+  const { isAuthenticated, isSiteOwner } = useAuth0();
   const [portfolio, setPortfolio] = useState([]);
 
   const getData =  async () => {
@@ -20,30 +23,53 @@ const Portfolios = () => {
   };
 
   useEffect(() => {
-    getData()
+    getData();
   }, []);
+
+  const displayDeleteWarning = (portfolioId, event) => {
+    event.stopPropagation();
+    const isConfirm = confirm('Are you sure want to delete this portfolio? ');
+
+    if (isConfirm) {
+      deletePortfolioNew(portfolioId)
+    }
+
+  };
+
+  const deletePortfolioNew = (portfolioId) => {
+    deletePortfolio(portfolioId)
+      .then(() => {
+        location.reload();
+      })
+      .catch(err => console.log(err))
+  };
+
+  const navigateToEdit = (portfolioId, event) => {
+    event.stopPropagation();
+    Router.pushRoute(`/portfolios/${portfolioId}/edit` )
+  };
 
 
   const renderPortfolios = portfolios =>
     portfolios.map((portfolio, index) =>
-        <Col md="4"  key={index}>
-            <span>
-              <Card className="portfolio-card">
-                <CardHeader className="portfolio-card-header">{portfolio.position}</CardHeader>
-                <CardBody>
-                  <p className="portfolio-card-city">{portfolio.location} </p>
-                  <CardTitle className="portfolio-card-title">{portfolio.title}</CardTitle>
-                  <CardText className="portfolio-card-text">{portfolio.description}</CardText>
-                  <div className="readMore"> </div>
-                </CardBody>
-              </Card>
-            </span>
-        </Col>
+      <Col md="4"  key={index}>
+        <PortfolioCard portfolio={portfolio}>
+          { isAuthenticated && isSiteOwner &&
+            <Fragment>
+              <Button  onClick={(event) => navigateToEdit(portfolio._id, event) } color="warning">Edit</Button>{' '}
+              <Button  onClick={(event) => displayDeleteWarning(portfolio._id, event)} color="danger">Delete</Button>
+            </Fragment>
+          }
+        </PortfolioCard>
+      </Col>
     );
 
   return (
     <BaseLayout>
       <BasePage className="portfolio-page" title='Portfolios'>
+        {
+          isAuthenticated && isSiteOwner && <Button onClick={() => Router.pushRoute('/portfolioNew')} color='success' className='create-port-btn'>Create portfolio</Button>
+        }
         <Container>
           <Row>
             { renderPortfolios(portfolio) }

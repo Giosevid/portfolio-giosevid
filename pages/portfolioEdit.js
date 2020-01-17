@@ -7,7 +7,6 @@ import { Row, Col } from 'reactstrap'
 import {getPortfolioById, updatePortfolio} from "../actions"
 import { Router } from '../routes'
 import { withRouter } from 'next/router'
-import axios from "axios";
 
 const PortfolioEdit = withRouter( ({ router: { query } }) => {
   const [portfolioData, setPortfolioData] = useState({});
@@ -15,7 +14,6 @@ const PortfolioEdit = withRouter( ({ router: { query } }) => {
   let portfolio;
 
   const getInitialProps = async () => {
-
     try {
       portfolio = await getPortfolioById(query.id);
       setPortfolioData(portfolio)
@@ -28,7 +26,6 @@ const PortfolioEdit = withRouter( ({ router: { query } }) => {
 
   const updatePortfolios = (portfolioData, { setSubmitting }) => {
     setSubmitting(true);
-    console.log('entro')
     updatePortfolio(portfolioData)
       .then(portfolio  => {
         Router.pushRoute('/portfolios');

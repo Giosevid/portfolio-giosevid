@@ -2891,6 +2891,11 @@ const Auth0Provider = (_ref) => {
     0: expiresAt,
     1: setExpiresAt
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(new Date().getTime());
+  const {
+    0: isSiteOwner,
+    1: setIsSiteOwner
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const namespace = 'http://localhost:3000';
   Object(_utils_useInterval__WEBPACK_IMPORTED_MODULE_6__["useInterval"])(() => {
     const actualDate = new Date().getTime();
     const beforeDate = expiresAt * 1000;
@@ -2926,6 +2931,8 @@ const Auth0Provider = (_ref) => {
           js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.set('jwt', data.__raw);
         });
         setUser(user);
+        const owner = user[namespace + '/role'] === 'siteOwner';
+        setIsSiteOwner(owner);
       } else {
         js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.remove('jwt');
       }
@@ -2950,6 +2957,8 @@ const Auth0Provider = (_ref) => {
     const user = await auth0Client.getUser();
     setUser(user);
     setIsAuthenticated(true);
+    const owner = user[namespace + '/role'] === 'siteOwner';
+    setIsSiteOwner(owner);
   };
 
   const handleRedirectCallback = async () => {
@@ -2959,6 +2968,8 @@ const Auth0Provider = (_ref) => {
     setLoading(false);
     setIsAuthenticated(true);
     setUser(user);
+    const owner = user[namespace + '/role'] === 'siteOwner';
+    setIsSiteOwner(owner);
   };
 
   return __jsx(Auth0Context.Provider, {
@@ -2967,6 +2978,7 @@ const Auth0Provider = (_ref) => {
       user,
       loading,
       popupOpen,
+      isSiteOwner,
       loginWithPopup,
       handleRedirectCallback,
       getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),

@@ -21,6 +21,9 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
   const [expiresAt, setExpiresAt] = useState(new Date().getTime());
+  const [isSiteOwner, setIsSiteOwner] = useState(false);
+
+  const namespace = 'http://localhost:3000';
 
   useInterval(() => {
     const actualDate = new Date().getTime();
@@ -52,6 +55,8 @@ export const Auth0Provider = ({
           Cookies.set('jwt', data.__raw);
         });
         setUser(user);
+        const owner = user[namespace + '/role'] === 'siteOwner';
+        setIsSiteOwner(owner)
       } else {
         Cookies.remove('jwt');
       }
@@ -73,6 +78,8 @@ export const Auth0Provider = ({
     const user = await auth0Client.getUser();
     setUser(user);
     setIsAuthenticated(true);
+    const owner = user[namespace + '/role'] === 'siteOwner';
+    setIsSiteOwner(owner)
   };
 
   const handleRedirectCallback = async () => {
@@ -82,6 +89,8 @@ export const Auth0Provider = ({
     setLoading(false);
     setIsAuthenticated(true);
     setUser(user);
+    const owner = user[namespace + '/role'] === 'siteOwner';
+    setIsSiteOwner(owner)
   };
   return (
     <Auth0Context.Provider
@@ -90,6 +99,7 @@ export const Auth0Provider = ({
         user,
         loading,
         popupOpen,
+        isSiteOwner,
         loginWithPopup,
         handleRedirectCallback,
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),

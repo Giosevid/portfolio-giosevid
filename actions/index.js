@@ -33,7 +33,7 @@ export const getPortfolios = async () => {
 };
 
 export const getPortfolioById = async (id) => {
-  return await axiosInstance.get(`http://localhost:3000/api/v1/portfolios/5e20767f9eb6ba45b01f3dcd`).then(response =>  response.data);
+  return await axiosInstance.get(`http://localhost:3000/api/v1/portfolios/${id}`).then(response =>  response.data);
 };
 
 export const createPortfolio = async (portfolioData) => {
@@ -46,4 +46,9 @@ export const updatePortfolio = async (portfolioData) => {
   return await axiosInstance.patch(`http://localhost:3000/api/v1/portfolios/${portfolioData._id}`, portfolioData, setAuthHeader() )
     .then(response =>  response.data)
     .catch(error => rejectPromise(error))
+};
+
+export const deletePortfolio = (portfolioId) => {
+  return axiosInstance.delete(`/portfolios/${portfolioId}`, setAuthHeader())
+    .then(response => response.data)
 };

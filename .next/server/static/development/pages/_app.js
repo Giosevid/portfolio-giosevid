@@ -151,7 +151,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/Header */ "./components/shared/Header.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -161,7 +164,10 @@ const BaseLayout = ({
   className
 }) => {
   const getHeader = headerType || 'default';
-  return __jsx("div", {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Giosevid Acosta"), __jsx("script", {
+    src: "https://kit.fontawesome.com/0ad13ac68c.js",
+    crossOrigin: "anonymous"
+  })), __jsx("div", {
     className: "layout-container"
   }, __jsx(_shared_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: `port-nav-${getHeader}`
@@ -169,7 +175,7 @@ const BaseLayout = ({
     className: `cover ${className}`
   }, __jsx("div", {
     className: "wrapper"
-  }, children)));
+  }, children))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (BaseLayout);
@@ -3254,6 +3260,17 @@ module.exports = require("js-cookie");
 /***/ (function(module, exports) {
 
 module.exports = require("jsonwebtoken");
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 

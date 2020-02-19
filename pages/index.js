@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout'
 import { Container, Row, Col } from 'reactstrap'
 import Typed from 'react-typed'
@@ -6,9 +7,25 @@ import { useAuth0 } from '../react-auth0-spa'
 const Index = () => {
     const roles = ['React.js', 'React Native', 'Angular.js', 'Angular',  'JavaScript'];
     const { isAuthenticated, user } = useAuth0();
+    const [isFlipping, setIsFlipping] = useState(true);
+    let intervalAssigned;
+
+    useEffect(() => {
+        animateCard();
+        return () => {
+            clearInterval(intervalAssigned)
+        };
+    }, [isFlipping]);
+
+
+    const animateCard = () => {
+        intervalAssigned = setInterval(() => {
+           setIsFlipping(!isFlipping)
+       }, 3000)
+    };
 
     return (
-    <BaseLayout className="cover" headerType='index'>
+    <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} headerType='index'>
         <div className="main-section">
             <div className="background-image">
                 <img src="/static/images/background-index.png"/>
@@ -17,8 +34,8 @@ const Index = () => {
                 <Row>
                     <Col md="6">
                         <div className="hero-section">
-                            <div className={`flipper`}>
-                                <div className="back">
+                            <div className={`flipper ${isFlipping && 'isFlipping'}`}>
+                                <div className="front">
                                     <div className="hero-section-content">
                                         <h2> Front End Web and Mobile Developer </h2>
                                         <div className="hero-section-content-intro">
@@ -27,7 +44,19 @@ const Index = () => {
                                     </div>
                                     <img className="image" src="/static/images/section-1.png"/>
                                     <div className="shadow-custom">
-                                        <div className="shadow-inner"></div>
+                                        <div className="shadow-inner"/>
+                                    </div>
+                                </div>
+                                <div className="back">
+                                    <div className="hero-section-content">
+                                        <h2> Get Your Projects Done </h2>
+                                        <div className="hero-section-content-intro">
+                                            Professional and quot quality service in web development.
+                                        </div>
+                                    </div>
+                                    <img className="image" src="/static/images/section-2.png"/>
+                                    <div className="shadow-custom shadow-custom-2">
+                                        <div className="shadow-inner"/>
                                     </div>
                                 </div>
                             </div>

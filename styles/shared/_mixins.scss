@@ -1,0 +1,19 @@
+// MIXINS
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin animation-type($animatioType) {
+  animation: $animatioType;
+}
+
+@mixin animation-fill-mode($animationMode) {
+  animation-fill-mode: $animationMode;
+}
+
+@mixin animation-delay($detail) {
+  animation-delay: $detail;
+}

@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap'
 
 
 const About = () =>
-  <BaseLayout>
+  <BaseLayout title="Giosevid Acosta - Learn More About Me">
     <BasePage className='about-page'>
       <Row className='mt-5'>
         <Col md='6'>

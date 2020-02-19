@@ -70,6 +70,9 @@
 
 .hero-welcome-wrapper {
   justify-content: flex-end;
+  @media (max-width: 770px) {
+    margin-top: 470px;
+  }
 
 }
 

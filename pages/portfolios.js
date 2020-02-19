@@ -65,7 +65,7 @@ const Portfolios = () => {
     );
 
   return (
-    <BaseLayout>
+    <BaseLayout title="Giosevid Acosta - Learn About My Experience">
       <BasePage className="portfolio-page" title='Portfolios'>
         {
           isAuthenticated && isSiteOwner && <Button onClick={() => Router.pushRoute('/portfolioNew')} color='success' className='create-port-btn'>Create portfolio</Button>

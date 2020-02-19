@@ -21,18 +21,18 @@ const Index = () => {
     const animateCard = () => {
         intervalAssigned = setInterval(() => {
            setIsFlipping(!isFlipping)
-       }, 3000)
+       }, 10000)
     };
 
     return (
-    <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} headerType='index'>
+    <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} headerType='index' title="Giosevid Acosta - Portfolio">
         <div className="main-section">
             <div className="background-image">
                 <img src="/static/images/background-index.png"/>
             </div>
             <Container>
-                <Row>
-                    <Col md="6">
+                <Row md='2'>
+                    <Col>
                         <div className="hero-section">
                             <div className={`flipper ${isFlipping && 'isFlipping'}`}>
                                 <div className="front">
@@ -62,7 +62,7 @@ const Index = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col md="6" className="hero-welcome-wrapper">
+                    <Col className="hero-welcome-wrapper">
                         <div className="hero-welcome-text">
                             <h1>
                                 {isAuthenticated && <span><b> { user && user.name } </b></span>}

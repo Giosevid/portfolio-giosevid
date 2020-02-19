@@ -104,6 +104,51 @@ module.exports = JSON.parse("{\"domain\":\"dev-erzj772m.auth0.com\",\"clientId\"
 
 /***/ }),
 
+/***/ "./components/ActiveLink.js":
+/*!**********************************!*\
+  !*** ./components/ActiveLink.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+const ActiveLink = (_ref) => {
+  let {
+    children,
+    router
+  } = _ref,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref, ["children", "router"]);
+
+  const child = react__WEBPACK_IMPORTED_MODULE_1__["Children"].only(children);
+  let className = child.props.className || "";
+
+  if (router.asPath === props.route && props.activeClassName) {
+    className = `${className} ${props.activeClassName}`;
+  }
+
+  return __jsx(_routes__WEBPACK_IMPORTED_MODULE_2__["Link"], props, react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(child, {
+    className
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(ActiveLink));
+
+/***/ }),
+
 /***/ "./components/BasePage.js":
 /*!********************************!*\
   !*** ./components/BasePage.js ***!
@@ -161,10 +206,40 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const BaseLayout = ({
   children,
   headerType,
-  className
+  className,
+  title,
+  cannonical
 }) => {
   const getHeader = headerType || 'default';
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Giosevid Acosta"), __jsx("script", {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, title), __jsx("meta", {
+    name: "Description",
+    content: "My name is Giosevid Acosta"
+  }), __jsx("meta", {
+    name: "keywords",
+    content: "Giosevid portfolio, giosevid developer, giosevid, giosevid linkedin"
+  }), __jsx("meta", {
+    property: "og:title",
+    content: "Giosevid Acosta - programmer, developer"
+  }), __jsx("meta", {
+    property: "og:locale",
+    content: "en_EU, en_US"
+  }), __jsx("meta", {
+    property: "og:url",
+    content: "http://localhost:3000"
+  }), __jsx("meta", {
+    property: "og:type",
+    content: "website"
+  }), __jsx("meta", {
+    property: "og:description",
+    content: "My name is Giosevid Acosta"
+  }), cannonical && __jsx("link", {
+    rel: "cannonical",
+    href: `http://localhost:3000${cannonical}`
+  }), __jsx("link", {
+    rel: "icon",
+    type: "image/ico",
+    href: "/static/images/favicon.ico"
+  }), __jsx("script", {
     src: "https://kit.fontawesome.com/0ad13ac68c.js",
     crossOrigin: "anonymous"
   })), __jsx("div", {
@@ -195,10 +270,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../react-auth0-spa */ "./react-auth0-spa.js");
+/* harmony import */ var _ActiveLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ActiveLink */ "./components/ActiveLink.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _react_auth0_spa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../react-auth0-spa */ "./react-auth0-spa.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -207,8 +284,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const BsNavLink = ({
   route,
   title
-}) => __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: route
+}) => __jsx(_ActiveLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  activeClassName: "active",
+  route: route
 }, __jsx("a", {
   className: "nav-link port-navbar-link"
 }, title));
@@ -216,7 +294,7 @@ const BsNavLink = ({
 const Login = () => {
   const {
     loginWithRedirect
-  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_4__["useAuth0"])();
   return __jsx("span", {
     onClick: () => loginWithRedirect({}),
     className: "nav-link port-navbar-link clickable"
@@ -226,7 +304,7 @@ const Login = () => {
 const Logout = () => {
   const {
     logout
-  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_4__["useAuth0"])();
   return __jsx("span", {
     onClick: () => logout(),
     className: "nav-link port-navbar-link clickable"
@@ -245,51 +323,46 @@ const Example = ({
 
   const {
     isAuthenticated
-  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_3__["useAuth0"])();
-  return __jsx("div", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Navbar"], {
+  } = Object(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_4__["useAuth0"])();
+  return __jsx("div", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
     className: `port-navbar port-nav-base absolute ${className}`,
     color: "transparent",
     dark: true,
     expand: "md"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarBrand"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavbarBrand"], {
     className: "port-navbar-brand",
     href: "/"
-  }, "Giosevid Acosta"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarToggler"], {
+  }, "Giosevid Acosta"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavbarToggler"], {
     onClick: toggle
-  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Collapse"], {
+  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Collapse"], {
     isOpen: isOpen,
     navbar: true
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
     className: "ml-auto",
     navbar: true
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
   }, __jsx(BsNavLink, {
     route: "/",
     title: "Home"
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
   }, __jsx(BsNavLink, {
     route: "/about",
     title: "About"
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
   }, __jsx(BsNavLink, {
     route: "/portfolios",
     title: "Portfolio"
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
-    className: "port-navbar-item"
-  }, __jsx(BsNavLink, {
-    route: "/blogs",
-    title: "Blog"
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
   }, __jsx(BsNavLink, {
     route: "/cv",
     title: "Cv"
-  })), !isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  })), !isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
-  }, __jsx(Login, null)), isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  }, __jsx(Login, null)), isAuthenticated && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["NavItem"], {
     className: "port-navbar-item"
   }, __jsx(Logout, null))))));
 };
@@ -2998,6 +3071,20 @@ const Auth0Provider = (_ref) => {
 
 /***/ }),
 
+/***/ "./routes.js":
+/*!*******************!*\
+  !*** ./routes.js ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const routes = __webpack_require__(/*! next-routes */ "next-routes"); // Name   Page      Pattern
+
+
+module.exports = routes().add('portfolios', '/portfolio/:id').add('portfolioEdit', '/portfolios/:id/edit');
+
+/***/ }),
+
 /***/ "./styles/main.scss":
 /*!**************************!*\
   !*** ./styles/main.scss ***!
@@ -3263,6 +3350,17 @@ module.exports = require("jsonwebtoken");
 
 /***/ }),
 
+/***/ "next-routes":
+/*!******************************!*\
+  !*** external "next-routes" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next-routes");
+
+/***/ }),
+
 /***/ "next/head":
 /*!****************************!*\
   !*** external "next/head" ***!
@@ -3271,6 +3369,17 @@ module.exports = require("jsonwebtoken");
 /***/ (function(module, exports) {
 
 module.exports = require("next/head");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link'
+import ActiveLink from '../ActiveLink'
 import {
     Collapse,
     Navbar,
@@ -11,9 +12,9 @@ import {
 import { useAuth0 } from '../../react-auth0-spa'
 
 const BsNavLink = ({route, title}) =>
-    <Link href={route}>
+    <ActiveLink activeClassName="active" route={route}>
         <a className="nav-link port-navbar-link">{title}</a>
-    </Link>;
+    </ActiveLink>
 
 const Login = () => {
     const { loginWithRedirect } = useAuth0();
@@ -49,10 +50,11 @@ const Example = ({ className }) => {
                         </NavItem>
                         <NavItem className="port-navbar-item">
                             <BsNavLink route="/portfolios" title="Portfolio" />
-                        </NavItem>
-                        <NavItem className="port-navbar-item">
+                        </NavItem>{/** 
+                         <NavItem className="port-navbar-item">
                             <BsNavLink route="/blogs" title="Blog" />
-                        </NavItem>
+                            </NavItem>
+                        */}
                         <NavItem className="port-navbar-item">
                             <BsNavLink route="/cv" title="Cv" />
                         </NavItem>

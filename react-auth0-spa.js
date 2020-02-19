@@ -23,7 +23,7 @@ export const Auth0Provider = ({
   const [expiresAt, setExpiresAt] = useState(new Date().getTime());
   const [isSiteOwner, setIsSiteOwner] = useState(false);
 
-  const namespace = 'http://localhost:3000';
+  const namespace = `${process.env.NAMESPACE}`;
 
   useInterval(() => {
     const actualDate = new Date().getTime();

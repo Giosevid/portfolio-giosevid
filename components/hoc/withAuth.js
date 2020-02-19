@@ -4,13 +4,13 @@ import BaseLayout from "../layouts/BaseLayout"
 import BasePage from "../BasePage"
 import { Container } from "reactstrap"
 
-const namespace = 'http://localhost:3000/';
+const namespace = `${process.env.NAMESPACE}`;
 
 export default role => (
    Component => {
     const renderProtectedPage = (props) => {
       const { isAuthenticated, user } = useAuth0();
-      const userRole = user && user[`${namespace}role`];
+      const userRole = user && user[`${namespace}/role`];
       let isAuthorized = false;
 
       if (role) {

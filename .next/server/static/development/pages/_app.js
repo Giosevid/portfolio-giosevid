@@ -225,7 +225,7 @@ const BaseLayout = ({
     content: "en_EU, en_US"
   }), __jsx("meta", {
     property: "og:url",
-    content: "http://localhost:3000"
+    content: `${"http://localhost:3000"}`
   }), __jsx("meta", {
     property: "og:type",
     content: "website"
@@ -234,7 +234,7 @@ const BaseLayout = ({
     content: "My name is Giosevid Acosta"
   }), cannonical && __jsx("link", {
     rel: "cannonical",
-    href: `http://localhost:3000${cannonical}`
+    href: `${"http://localhost:3000"}${cannonical}`
   }), __jsx("link", {
     rel: "icon",
     type: "image/ico",
@@ -2890,7 +2890,7 @@ const MyApp = ({
 }) => __jsx(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_9__["Auth0Provider"], {
   domain: _auth_config_json__WEBPACK_IMPORTED_MODULE_10__.domain,
   client_id: _auth_config_json__WEBPACK_IMPORTED_MODULE_10__.clientId,
-  redirect_uri: "http://localhost:3000",
+  redirect_uri: `${"http://localhost:3000"}`,
   onRedirectCallback: onRedirectCallback
 }, __jsx(Component, pageProps));
 
@@ -2974,7 +2974,7 @@ const Auth0Provider = (_ref) => {
     0: isSiteOwner,
     1: setIsSiteOwner
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  const namespace = 'http://localhost:3000';
+  const namespace = `${"https://giosevid.herokuapp.com"}`;
   Object(_utils_useInterval__WEBPACK_IMPORTED_MODULE_6__["useInterval"])(() => {
     const actualDate = new Date().getTime();
     const beforeDate = expiresAt * 1000;

@@ -12,10 +12,10 @@ const BaseLayout = ({ children, headerType, className, title, cannonical }) => {
         <meta name="keywords" content="Giosevid portfolio, giosevid developer, giosevid, giosevid linkedin"/>
         <meta property="og:title" content="Giosevid Acosta - programmer, developer"/>
         <meta property="og:locale" content="en_EU, en_US"/>
-        <meta property="og:url" content="http://localhost:3000"/>
+        <meta property="og:url" content={`${process.env.BASE_URL}`}/>
         <meta property="og:type" content="website"/>
         <meta property="og:description" content="My name is Giosevid Acosta"/>
-        {cannonical && <link rel="cannonical" href={`http://localhost:3000${cannonical}`} />}
+        {cannonical && <link rel="cannonical" href={`${process.env.BASE_URL}${cannonical}`} />}
         <link rel="icon" type="image/ico" href="/static/images/favicon.ico" />
         <script src="https://kit.fontawesome.com/0ad13ac68c.js" crossOrigin="anonymous" />
       </Head>

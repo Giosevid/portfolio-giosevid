@@ -127,7 +127,7 @@ var BaseLayout = function BaseLayout(_ref) {
     content: "en_EU, en_US"
   }), __jsx("meta", {
     property: "og:url",
-    content: "http://localhost:3000"
+    content: "".concat("http://localhost:3000")
   }), __jsx("meta", {
     property: "og:type",
     content: "website"
@@ -136,7 +136,7 @@ var BaseLayout = function BaseLayout(_ref) {
     content: "My name is Giosevid Acosta"
   }), cannonical && __jsx("link", {
     rel: "cannonical",
-    href: "http://localhost:3000".concat(cannonical)
+    href: "".concat("http://localhost:3000").concat(cannonical)
   }), __jsx("link", {
     rel: "icon",
     type: "image/ico",
@@ -56959,7 +56959,7 @@ var MyApp = function MyApp(_ref) {
   return __jsx(_react_auth0_spa__WEBPACK_IMPORTED_MODULE_10__["Auth0Provider"], {
     domain: _auth_config_json__WEBPACK_IMPORTED_MODULE_11__.domain,
     client_id: _auth_config_json__WEBPACK_IMPORTED_MODULE_11__.clientId,
-    redirect_uri: "http://localhost:3000",
+    redirect_uri: "".concat("http://localhost:3000"),
     onRedirectCallback: onRedirectCallback
   }, __jsx(Component, pageProps));
 };
@@ -57066,7 +57066,7 @@ var Auth0Provider = function Auth0Provider(_ref) {
       isSiteOwner = _useState7[0],
       setIsSiteOwner = _useState7[1];
 
-  var namespace = 'http://localhost:3000';
+  var namespace = "".concat("https://giosevid.herokuapp.com");
   Object(_utils_useInterval__WEBPACK_IMPORTED_MODULE_7__["useInterval"])(function () {
     var actualDate = new Date().getTime();
     var beforeDate = expiresAt * 1000;

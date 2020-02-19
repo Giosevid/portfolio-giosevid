@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }) =>
     <Auth0Provider
       domain={config.domain}
       client_id={config.clientId}
-      redirect_uri='http://localhost:3000'
+      redirect_uri={`${process.env.BASE_URL}`}
       onRedirectCallback={onRedirectCallback}
     >
       <Component {...pageProps} />
